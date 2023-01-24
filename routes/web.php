@@ -41,6 +41,8 @@ Route::post('/buscar', function (Request $request) {
 })->name('buscar');
 
 
+
+
 Route::get('salvar', function(Request $request) {
     $var = $request->session()->get('var');
     $cl = new Client();
