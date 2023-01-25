@@ -43,7 +43,7 @@ Route::post('/buscar', function (Request $request) {
 
 
 
-Route::get('salvar', function(Request $request) {
+Route::get('salvar', function(Request $request){
     $var = $request->session()->get('var');
     $cl = new Client();
         $res = $cl->get("https://api.github.com/users/$var/)/commits");
