@@ -23,14 +23,19 @@ Route::get('/', function () {
 });
 
 
-Route::get('/', function () {   //fazer buscar
+Route::post('/buscar', function (Request $request) {   //fazer o buscar
 
-    return view('welcome');
+    $nome = $request->input('nome');
+    $client = new Client();
+    $response = $client->get("https://api.github.com/users/$nome/repos");
+    $repositorios = json_decode($response->getBody(), true); 
+
+    return view('buscar');
 });
 
 
 
-Route::post('/buscar', function (Request $request) {
+Route::post('/buscarr', function (Request $request) {
     $nome = $request->input('nome');
     $client = new Client();
     $response = $client->get("https://api.github.com/users/$nome/repos");    
