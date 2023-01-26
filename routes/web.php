@@ -23,6 +23,12 @@ Route::get('/', function () {
 });
 
 
+Route::get('/', function () {   //fazer buscar
+
+    return view('welcome');
+});
+
+
 
 Route::post('/buscar', function (Request $request) {
     $nome = $request->input('nome');
@@ -47,7 +53,7 @@ Route::get('salvar', function(Request $request){
         $commits = json_decode($res->getBody());
 
         print_r($commits);
-        
+
     Repositorio:
     return view('salvar', compact('var'));
 });
