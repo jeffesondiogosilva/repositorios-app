@@ -47,6 +47,7 @@ Route::get('salvar', function(Request $request){
         $commits = json_decode($res->getBody());
 
         print_r($commits);
+        
     Repositorio:
     return view('salvar', compact('var'));
 });
