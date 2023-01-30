@@ -24,9 +24,10 @@
             
         
         <div id="container">
-            @foreach ($response as $dt) 
+            @foreach($repositorio as $item => $value) 
+              
                 "<ul>
-                <li>{{ $dt }}</li>
+                <li>{{ $item }} : {{ $value }}</li>
 
                 </ul>"
             @endforeach
