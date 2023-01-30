@@ -22,15 +22,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/buscarr', function () {
+
+    $x = ['nome' => 1, 'idade' => 6];
+    var_dump($x);
+    return view('buscar')->with($x);
+});
+
+Route::get('/buscar', function () { });
+
 
 Route::post('/buscar', function (Request $request) {   //fazer o buscar
 
     $nome = $request->input('nome');
     $client = new Client();
     $response = $client->get("https://api.github.com/users/$nome/repos");
-    $repositorios = json_decode($response->getBody(), true); 
+    $repositorios = json_decode($response->getBody(), true);
+    $repositorio = [];
 
-    return view('buscar');
+    for ($i = 0; $i < 10; $i++) {
+
+        array_push($repositorio, $repositorios[$i]['name']);
+        
+  
+    }        
+
+    return view('buscar', compact('repositorio'));
+    
 });
 
 
